@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\Warmups\LetterShifting\main.cpp(18,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\Warmups\LetterShifting\main.cpp(19,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  LetterShifting.vcxproj -> C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\x64\Debug\LetterShifting.exe

@@ -1,0 +1,7 @@
+﻿  Application.cpp
+  IPCClientApp.cpp
+  IPCServerApp.cpp
+C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\Assessments\AIE_Exercise_IPC_ConsoleDemo\IPCServerApp.cpp(30,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
+  Generating Code...
+  AIE_Exercise_IPC_ConsoleDemo.vcxproj -> C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\x64\Debug\AIE_Exercise_IPC_ConsoleDemo.exe

@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\Warmups\ExplodeString\main.cpp(16,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  ExplodeString.vcxproj -> C:\Users\s201031\Desktop\Work\CodeDesignAndDataStructures\CodeDesignAndDataStructures\x64\Debug\ExplodeString.exe
