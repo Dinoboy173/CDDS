@@ -2,7 +2,7 @@
 #include <chrono>
 #include "LinkedList.h"
 
-int Client()
+int main()
 {
     LinkedList<int> list = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
 

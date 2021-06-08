@@ -10,9 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assessments", "Assessments", "{CC266647-2B21-4543-B4CF-5650522DA9A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{56AD7D19-4161-4751-B230-1EF9B1E5F53E}"
-	ProjectSection(SolutionItems) = preProject
-		Exercises\AIE_Exercise_IPC_ConsoleDemo\AIE_Exercise_IPC_ConsoleDemo.vcxproj = Exercises\AIE_Exercise_IPC_ConsoleDemo\AIE_Exercise_IPC_ConsoleDemo.vcxproj
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_Collections", "Assessments\AIE_Collections\AIE_Collections.vcxproj", "{90D4DE6A-C2A1-4152-AF4C-3487C0639346}"
 EndProject
@@ -33,6 +30,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_05_MiniSudoku", "Warmups\AIE_05_MiniSudoku\AIE_05_MiniSudoku.vcxproj", "{081C76F7-CD08-48D4-9E53-B58053682576}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_06_LetterShifting", "Warmups\AIE_06_LetterShifting\AIE_06_LetterShifting.vcxproj", "{3ACCD652-74E1-4953-9255-6BFAE17E8A18}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_Exercise_IPC_ConsoleDemo", "Exercises\AIE_Exercise_IPC_ConsoleDemo\AIE_Exercise_IPC_ConsoleDemo.vcxproj", "{30671081-35EB-4A8D-A50C-C27E860F34BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +129,14 @@ Global
 		{3ACCD652-74E1-4953-9255-6BFAE17E8A18}.Release|x64.Build.0 = Release|x64
 		{3ACCD652-74E1-4953-9255-6BFAE17E8A18}.Release|x86.ActiveCfg = Release|Win32
 		{3ACCD652-74E1-4953-9255-6BFAE17E8A18}.Release|x86.Build.0 = Release|Win32
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Debug|x64.ActiveCfg = Debug|x64
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Debug|x64.Build.0 = Debug|x64
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Debug|x86.ActiveCfg = Debug|Win32
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Debug|x86.Build.0 = Debug|Win32
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Release|x64.ActiveCfg = Release|x64
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Release|x64.Build.0 = Release|x64
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Release|x86.ActiveCfg = Release|Win32
+		{30671081-35EB-4A8D-A50C-C27E860F34BF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +153,7 @@ Global
 		{E758D4DB-7E32-4FAA-9201-7217E5AD20FC} = {3266AEAD-6D05-440D-8DE0-141528937C0F}
 		{081C76F7-CD08-48D4-9E53-B58053682576} = {3266AEAD-6D05-440D-8DE0-141528937C0F}
 		{3ACCD652-74E1-4953-9255-6BFAE17E8A18} = {3266AEAD-6D05-440D-8DE0-141528937C0F}
+		{30671081-35EB-4A8D-A50C-C27E860F34BF} = {56AD7D19-4161-4751-B230-1EF9B1E5F53E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {106BB447-CA71-4D4E-848C-D730D2B1C82A}
