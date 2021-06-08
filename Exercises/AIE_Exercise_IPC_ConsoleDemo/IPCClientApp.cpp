@@ -38,7 +38,10 @@ int IPCClientApp::Client()
 	std::cout << " };" << std::endl;
 
 	// wait for a keypress to close
-	Sleep(500);
+
+	if (_getch() == 27)
+		m_shouldClose = true;
+	else
 
 	return 0;
 }

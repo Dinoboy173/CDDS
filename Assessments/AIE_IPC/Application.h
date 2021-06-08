@@ -1,5 +1,10 @@
 #pragma once
 
+#include <iostream>
+#include <raylib.h>
+#include "FixWindows.h"
+#include "Entity.h"
+
 class Application
 {
 public:
@@ -8,6 +13,10 @@ public:
 	virtual ~Application();
 
 	void Run();
+
+	void MapMemory();
+	void UnmapMemory();
+	void OpenAndCreateFile();
 
 	virtual void Startup() = 0;
 	virtual void Shutdown() = 0;
@@ -20,6 +29,16 @@ protected:
 	int m_screenWidth;
 	int m_screenHeight;
 	const char* m_windowTitle;
+
+	//bool m_editorIsOpen = false;
+
+	bool m_isCreated = false; // try use this for consideration
+	HANDLE m_fileHandle;
+	enum { ENTITY_COUNT = 10 };
+	Entity *m_data;
+	Entity m_entities[ENTITY_COUNT];
+	const wchar_t m_mySharedMemory[7] = L"Memory";
+	const wchar_t m_bool[11] = L"boolMemory";
 
 private:
 };

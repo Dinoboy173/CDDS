@@ -10,28 +10,32 @@
 EntityEditorApp::EntityEditorApp(int screenWidth, int screenHeight) : 
 	Application(screenWidth, screenHeight, "Entity Editor App")
 {
+	OpenAndCreateFile();
 
+	MapMemory();
 }
 
 EntityEditorApp::~EntityEditorApp()
 {
-
+	UnmapMemory();
 }
 
-void EntityEditorApp::Startup() {
-
+void EntityEditorApp::Startup()
+{
 	srand(time(nullptr));
 	for (auto& entity : m_entities)
 	{
 		entity.x = rand() % m_screenWidth;
 		entity.y = rand() % m_screenHeight;
-		entity.size = 10;
+		entity.size = rand() % 20 + 5;
 		entity.speed = rand() % 100;
 		entity.rotation = rand() % 360;
-		entity.r = rand() % 255;
-		entity.g = rand() % 255;
-		entity.b = rand() % 255;
+		entity.r = rand() % 256;
+		entity.g = rand() % 256;
+		entity.b = rand() % 256;
 	}
+
+	*m_editorIsOpen = true;
 }
 
 void EntityEditorApp::Shutdown()
@@ -39,9 +43,8 @@ void EntityEditorApp::Shutdown()
 
 }
 
-void EntityEditorApp::Update(float deltaTime) {
-
-
+void EntityEditorApp::Update(float deltaTime)
+{
 	// select an entity to edit
 	static int selection = 0;
 	static bool selectionEditMode = false;
@@ -51,7 +54,6 @@ void EntityEditorApp::Update(float deltaTime) {
 	static bool sizeEditMode = false;
 	static bool speedEditMode = false;
 	static Color colorPickerValue = WHITE;
-
 
 	if (GuiSpinner(Rectangle{ 90, 25, 125, 25 }, "Entity", &selection, 0, ENTITY_COUNT - 1, selectionEditMode)) selectionEditMode = !selectionEditMode;
 
@@ -83,7 +85,8 @@ void EntityEditorApp::Update(float deltaTime) {
 
 	// move entities
 
-	for (int i = 0; i < ENTITY_COUNT; i++) {
+	for (int i = 0; i < ENTITY_COUNT; i++)
+	{
 		if (selection == i)
 			continue;
 
@@ -100,6 +103,9 @@ void EntityEditorApp::Update(float deltaTime) {
 		if (m_entities[i].y < 0)
 			m_entities[i].y += m_screenHeight;
 	}
+
+	for (int i = 0; i < ENTITY_COUNT; i++)
+		m_data[i] = m_entities[i];
 }
 
 void EntityEditorApp::Draw()
@@ -109,7 +115,8 @@ void EntityEditorApp::Draw()
 	ClearBackground(RAYWHITE);
 
 	// draw entities
-	for (auto& entity : m_entities) {
+	for (auto& entity : m_entities)
+	{
 		DrawRectanglePro(
 			Rectangle{ entity.x, entity.y, entity.size, entity.size }, // rectangle
 			Vector2{ entity.size / 2, entity.size / 2 }, // origin

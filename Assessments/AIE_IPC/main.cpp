@@ -30,17 +30,19 @@ int PromptInt(const std::string& message, std::function<bool(int value)> validat
 
 int main(int argc, char** argv)
 {
-
-	std::cout << "1. Run Display" << std::endl;
-	std::cout << "2. Run Editor" << std::endl;
-	int prompt = PromptInt("Run: ", [](int val) { 
-		return val == 1 || val == 2;
-	});
+	std::cout << "1. Run Editor" << std::endl;
+	std::cout << "2. Run Display" << std::endl;
+	int prompt = PromptInt("Run: ", [](int val)
+		{
+			return val == 1 || val == 2;
+		});
 
 	Application* app = nullptr;
 
-	if (prompt == 1) app = new EntityDisplayApp(800, 450);
-	if (prompt == 2) app = new EntityEditorApp(800, 450);
+	if (prompt == 1)
+		app = new EntityEditorApp(800, 450);
+	if (prompt == 2)
+		app = new EntityDisplayApp(800, 450);
 
 	app->Run();
 

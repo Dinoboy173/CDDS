@@ -20,6 +20,6 @@ public:
 protected:
 
 	// define a block of entities that should be shared
-	enum { ENTITY_COUNT = 10 };
-	Entity m_entities[ENTITY_COUNT];
+	
+	
 };
