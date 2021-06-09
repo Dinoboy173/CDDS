@@ -21,10 +21,7 @@ void PreOrderPrint(Node* n)
 {
     // TODO
     if (n == nullptr)
-    {
-        std::cout << "null" << std::endl;
         return;
-    }
 
     std::cout << n->value << std::endl;
 
@@ -230,10 +227,6 @@ Node Remove(Node* root, int value)
 
     secondRoot = NULL;
 
-    std::cout << "PreOrderPrint SecondTree\n";
-    PreOrderPrint(secondRoot);
-    std::cout << std::endl;
-
     return *root;
 }
 
@@ -285,9 +278,11 @@ int main(int argc, char** argv)
     else
         std::cout << "Value Not Found" << std::endl;
 
+    std::cout << std::endl;
+
     root = Remove(&root, 4);
 
-    std::cout << "PreOrderPrint Tree\n";
+    std::cout << "PreOrderPrint\n";
     PreOrderPrint(&root);
     std::cout << std::endl;
 
