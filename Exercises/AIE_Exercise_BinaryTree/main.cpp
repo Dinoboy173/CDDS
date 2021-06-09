@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 
 struct Node
 {
@@ -75,7 +76,6 @@ Node* Find(Node* root, int value)
 void Insert(Node* root, Node* nodeToInsert)
 {
     // TODO
-
     bool nodeIsInserted = false;
 
     while (!nodeIsInserted)
@@ -104,7 +104,6 @@ void Insert(Node* root, Node* nodeToInsert)
 Node* Find(Node* root, Node* parent, int value)
 {
     // TODO
-
     bool isFound = false;
 
     while (!isFound)
@@ -117,7 +116,7 @@ Node* Find(Node* root, Node* parent, int value)
             {
                 root = root->left;
 
-                if (parent->left != root)
+                if (root->value != value)
                     parent = parent->left;
             }
             else
@@ -129,7 +128,7 @@ Node* Find(Node* root, Node* parent, int value)
             {
                 root = root->right;
             
-                if (parent->right != root)
+                if (root->value != value)
                     parent = parent->right;
             }
             else
@@ -140,36 +139,77 @@ Node* Find(Node* root, Node* parent, int value)
     return parent;
 }
 
-void InsertTree(Node* root, Node* secondRoot)
+std::pair<Node*, Node*> SplitTree(Node* root, Node* parent, int value)
 {
-    bool nodesInserted = false;
+    Node* secondRoot = root;
 
-    Node* tempRoot = secondRoot;
-    Node* parent = secondRoot;
-
-    while (!nodesInserted)
+    if (root->value != value)
     {
-        if (secondRoot->value == tempRoot->value)
-            nodesInserted = true;
-
-        if (secondRoot->left != nullptr)
+        if (parent->left != nullptr && parent->left->value == value)
         {
-            secondRoot = secondRoot->left;
-            nodesInserted = false;
+            secondRoot = parent->left;
+            parent->left = nullptr;
         }
-
-        else if (secondRoot->right != nullptr)
+        else if (parent->right != nullptr && parent->right->value == value)
         {
-            secondRoot = secondRoot->right;
-            nodesInserted = false;
+            secondRoot = parent->right;
+            parent->right = nullptr;
         }
+    }
 
-        else if (secondRoot->left == nullptr && secondRoot->right == nullptr)
+    if (secondRoot == root)
+    {
+        if (root->left != nullptr)
         {
-            Insert(root, secondRoot);
+            root = root->left;
+            secondRoot->left = nullptr;
+        }
+        else if (root->right != nullptr)
+        {
+            root = root->right;
+            secondRoot->right = nullptr;
+        }
+    }
 
-            nodesInserted = false;
-            secondRoot = tempRoot;
+    return std::make_pair(root, secondRoot);
+}
+
+void InsertTree(Node* root, Node* secondRoot, int value)
+{
+    bool isInserted = false;
+
+    Node* resetNode = secondRoot;
+
+    while (!isInserted)
+    {
+        if (secondRoot->value == value && secondRoot->left == nullptr && secondRoot->right == nullptr)
+        {
+            isInserted = true;
+        }
+        else
+        {
+            if (secondRoot->left != nullptr)
+            {
+                if (secondRoot->left->left == nullptr && secondRoot->left->right == nullptr)
+                {
+                    Insert(root, secondRoot->left);
+                    secondRoot->left = nullptr;
+                    secondRoot = resetNode;
+                }
+                else
+                    secondRoot = secondRoot->left;
+            }
+            else if (secondRoot->right != nullptr)
+            {
+                if (secondRoot->right->left == nullptr && secondRoot->right->right == nullptr)
+                {
+                    Insert(root, secondRoot->right);
+                    secondRoot->right = nullptr;
+                    secondRoot = resetNode;
+                }
+                else
+                    secondRoot = secondRoot->right;
+            }
         }
     }
 }
@@ -178,50 +218,21 @@ Node Remove(Node* root, int value)
 {
     // TODO
     Node* parent = Find(root, root, value);
-    Node* secondRoot = root;
+    if (parent == NULL)
+        return NULL;
 
-    //----------------------------------------------- doesn't work redo
-    if (parent == root)
-    {
-        if (root->left != nullptr)
-        {
-            secondRoot = root;
-            root = root->left;
-            secondRoot->left = nullptr;
-        }
-        else if (root->right != nullptr)
-        {
-            secondRoot = root;
-            root = root->right;
-            secondRoot->right = nullptr;
-        }
-    }
-    else
-    {
-        if (parent->left->value == value)
-        {
-            secondRoot = parent->left;
-            parent->left = nullptr;
-        }
-        else if (parent->right->value == value)
-        {
-            secondRoot = parent->right;
-            parent->right = nullptr;
-        }
-    }
-    //-----------------------------------------------
+    auto roots = SplitTree(root, parent, value);
 
-    if (secondRoot->left != nullptr)
-    {
-        Insert(root, secondRoot->left);
-        secondRoot->left = nullptr;
-    }
+    root = roots.first;
+    Node* secondRoot = roots.second;
 
-    if (secondRoot->right != nullptr)
-    {
-        Insert(root, secondRoot->right);
-        secondRoot->right = nullptr;
-    }
+    InsertTree(root, secondRoot, value);
+
+    secondRoot = NULL;
+
+    std::cout << "PreOrderPrint SecondTree\n";
+    PreOrderPrint(secondRoot);
+    std::cout << std::endl;
 
     return *root;
 }
@@ -274,7 +285,7 @@ int main(int argc, char** argv)
     else
         std::cout << "Value Not Found" << std::endl;
 
-    root = Remove(&root, 8);
+    root = Remove(&root, 4);
 
     std::cout << "PreOrderPrint Tree\n";
     PreOrderPrint(&root);
