@@ -1,11 +1,8 @@
-
-
 #include "BinaryTree.h"
 #include "TreeNode.h"
 #include "raylib.h"
 #include <iostream>
 #include <cstdlib>
-
 
 BinaryTree::BinaryTree()
 {
@@ -30,7 +27,33 @@ bool BinaryTree::IsEmpty() const
 // Smaller elements are placed to the left, larger onces are placed to the right.
 void BinaryTree::Insert(int a_nValue)
 {
-	
+	TreeNode* root = m_pRoot;
+
+	TreeNode nodeToInsert = TreeNode(a_nValue);
+
+	bool nodeIsInserted = false;
+
+	while (!nodeIsInserted)
+	{
+		if (nodeToInsert.GetData == root->GetData)
+			return;
+		else if (nodeToInsert.GetData < root->GetData)
+			if (root->GetLeft != nullptr)
+				root = root->GetLeft;
+			else
+			{
+				root->GetLeft = nodeToInsert;
+				nodeIsInserted = true;
+			}
+		else if (nodeToInsert.GetData > root->GetData)
+			if (root->GetRight != nullptr)
+				root = root->GetRight;
+			else
+			{
+				root->GetRight = nodeToInsert;
+				nodeIsInserted = true;
+			}
+	}
 }
 
 TreeNode* BinaryTree::Find(int a_nValue)

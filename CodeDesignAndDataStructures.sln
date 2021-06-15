@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_Raylib_BinaryTreeVis", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_08_RemoveLastVowel", "AIE_08_RemoveLastVowel\AIE_08_RemoveLastVowel.vcxproj", "{328F3B4E-8CFD-41F0-B6D0-3F95180B1B11}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_PasswordHash", "Assessments\AIE_PasswordHash\AIE_PasswordHash.vcxproj", "{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -157,6 +159,14 @@ Global
 		{328F3B4E-8CFD-41F0-B6D0-3F95180B1B11}.Release|x64.Build.0 = Release|x64
 		{328F3B4E-8CFD-41F0-B6D0-3F95180B1B11}.Release|x86.ActiveCfg = Release|Win32
 		{328F3B4E-8CFD-41F0-B6D0-3F95180B1B11}.Release|x86.Build.0 = Release|Win32
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Debug|x64.ActiveCfg = Debug|x64
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Debug|x64.Build.0 = Debug|x64
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Debug|x86.ActiveCfg = Debug|Win32
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Debug|x86.Build.0 = Debug|Win32
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Release|x64.ActiveCfg = Release|x64
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Release|x64.Build.0 = Release|x64
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Release|x86.ActiveCfg = Release|Win32
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +186,7 @@ Global
 		{30671081-35EB-4A8D-A50C-C27E860F34BF} = {56AD7D19-4161-4751-B230-1EF9B1E5F53E}
 		{1532490A-1EC5-4851-929D-8A51D4A4C6B1} = {CC266647-2B21-4543-B4CF-5650522DA9A8}
 		{328F3B4E-8CFD-41F0-B6D0-3F95180B1B11} = {3266AEAD-6D05-440D-8DE0-141528937C0F}
+		{16CA8E76-DF69-4871-B44B-61F28FE5D3FC} = {CC266647-2B21-4543-B4CF-5650522DA9A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {106BB447-CA71-4D4E-848C-D730D2B1C82A}
