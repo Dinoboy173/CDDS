@@ -26,13 +26,10 @@ void EntityDisplayApp::Shutdown()
 
 void EntityDisplayApp::Update(float deltaTime)
 {
-	if (m_editorIsOpen)
-	{
 		m_entities.clear();
 
 		for (int i = 0; i < ENTITY_COUNT; i++)
 			m_entities.push_back(m_data[i]);
-	}
 }
 
 void EntityDisplayApp::Draw()
@@ -42,8 +39,6 @@ void EntityDisplayApp::Draw()
 	ClearBackground(RAYWHITE);
 
 	// draw entities
-	if (m_editorIsOpen)
-	{
 		for (auto& entity : m_entities)
 		{
 			DrawRectanglePro(
@@ -52,11 +47,6 @@ void EntityDisplayApp::Draw()
 				entity.rotation,
 				Color{ entity.r, entity.g, entity.b, 255 });
 		}
-	}
-	else
-	{
-		DrawText("Waiting For Editor", m_screenWidth/4, m_screenHeight/2, 40, RED);
-	}
 
 	// output some text, uses the last used colour
 	DrawText("Press ESC to quit", 630, 15, 12, LIGHTGRAY);

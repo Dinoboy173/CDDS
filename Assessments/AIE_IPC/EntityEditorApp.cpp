@@ -34,8 +34,6 @@ void EntityEditorApp::Startup()
 		entity.g = rand() % 256;
 		entity.b = rand() % 256;
 	}
-
-	*m_editorIsOpen = true;
 }
 
 void EntityEditorApp::Shutdown()
