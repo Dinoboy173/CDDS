@@ -34,20 +34,6 @@ void Application::Run()
 void Application::MapMemory()
 {
 	// map the memory from the shared block to a pointer we can manipulate
-
-	//m_editorIsOpen = MapViewOfFile(m_fileHandle,
-	//	FILE_MAP_ALL_ACCESS,
-	//	0,
-	//	0,
-	//	sizeof(bool));
-	//
-	//if (m_editorIsOpen == NULL)
-	//{
-	//	std::cout << "Could not map view of file: " << GetLastError() << std::endl;
-	//
-	//	CloseHandle(m_fileHandle);
-	//	return;
-	//}
 	
 	m_data = (Entity*)MapViewOfFile(m_fileHandle,
 		FILE_MAP_ALL_ACCESS,

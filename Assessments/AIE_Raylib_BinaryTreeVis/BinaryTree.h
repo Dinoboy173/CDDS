@@ -6,6 +6,8 @@ Date: 17/4/2015
 #ifndef _BINARYTREE_H_
 #define _BINARYTREE_H_
 
+#include <map>
+
 class TreeNode;
 
 class BinaryTree
@@ -18,6 +20,13 @@ public:
 	void Insert(int a_nValue);
 	void Remove(int a_nValue);
 	TreeNode* Find(int a_nValue);
+
+	void Insert(TreeNode* root, TreeNode* nodeToInsert);
+
+	TreeNode* Remove(TreeNode* root, int value);
+	TreeNode* Find(TreeNode* root, TreeNode* parent, int value);
+	std::pair<TreeNode*, TreeNode*> SplitTree(TreeNode* root, TreeNode* parent, int value);
+	void InsertTree(TreeNode* root, TreeNode* secondRoot, int value);
 
 	void PrintOrdered();
 	void PrintUnordered();

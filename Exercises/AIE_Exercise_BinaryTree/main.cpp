@@ -280,7 +280,7 @@ int main(int argc, char** argv)
 
     std::cout << std::endl;
 
-    root = Remove(&root, 4);
+    root = Remove(&root, 10);
 
     std::cout << "PreOrderPrint\n";
     PreOrderPrint(&root);
