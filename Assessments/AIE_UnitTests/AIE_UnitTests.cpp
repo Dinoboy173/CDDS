@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-#include "../CodeDesignAndDataStructures/LinkedList.h"
+#include "../AIE_Collections/LinkedList.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
