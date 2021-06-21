@@ -61,6 +61,8 @@ public:
 
     ~LinkedList()
     {
+        if (m_first != nullptr)
+            Clear();
     }
 
     LinkedList(std::initializer_list<T> list)
@@ -93,18 +95,21 @@ public:
 
     void PopBack()
     {
-        if (m_first == m_last)
+        if (m_first != nullptr)
         {
-            RemoveWhenOne();
-        }
-        else if (m_first != nullptr && m_last != nullptr)
-        {
-            m_last = m_last->prev;
+            if (m_first == m_last)
+            {
+                RemoveWhenOne();
+            }
+            else if (m_first != nullptr && m_last != nullptr)
+            {
+                m_last = m_last->prev;
 
-            delete m_last->next;
-            m_last->next = nullptr;
+                delete m_last->next;
+                m_last->next = nullptr;
 
-            m_count--;
+                m_count--;
+            }
         }
     }
     void PushFront(T value)
@@ -147,17 +152,28 @@ public:
         }
     }
 
+    void Swap(Node* node1, Node* node2)
+    {
+        int tempValue;
+
+        if (node1 == node2)
+            return;
+        else
+        {
+            tempValue = node1->value;
+            node1->value = node2->value;
+            node2->value = tempValue;
+            return;
+        }
+    }
+
     void Sort()
     {
         bool isSorted = false;
 
         while (!isSorted)
         {
-            Node* nodeToMove = new Node();
-
-            nodeToMove->value = 0;
-            nodeToMove->next = nullptr;
-            nodeToMove->prev = nullptr;
+            Node* nodeToMove = FirstNode();
 
             bool nodeSelected = false;
             int sortCount = m_count;
@@ -192,19 +208,7 @@ public:
 
                         if (stop <= 1)
                         {
-                            if (iter == FirstNode())
-                                PushFront(nodeToMove->value);
-                            else if (iter == LastNode())
-                                PushBack(nodeToMove->value);
-                            else
-                                Insert(iter, nodeToMove->value);
-
-                            if (nodeToMove == FirstNode())
-                                PopFront();
-                            else if (nodeToMove == LastNode())
-                                PopBack();
-                            else
-                                iter = Remove(nodeToMove);
+                            Swap(nodeToMove, iter.node);
 
                             sortCount--;
                             nodeSelected = false;

@@ -244,7 +244,16 @@ void BinaryTree::PrintOrdered()
 
 void BinaryTree::PrintOrderedRecurse(TreeNode* pNode)
 {
+	if (pNode == nullptr)
+	{
+		std::cout << std::endl;
+		return;
+	}
 
+	std::cout << pNode->GetData() << std::endl;
+
+	PrintOrderedRecurse(pNode->GetLeft());
+	PrintOrderedRecurse(pNode->GetRight());
 }
 
 void BinaryTree::PrintUnordered()
@@ -255,7 +264,16 @@ void BinaryTree::PrintUnordered()
 
 void BinaryTree::PrintUnorderedRecurse(TreeNode* pNode)
 {
+	if (pNode == nullptr)
+	{
+		std::cout << std::endl;
+		return;
+	}
 
+	std::cout << pNode->GetData() << std::endl;
+
+	PrintUnorderedRecurse(pNode->GetRight());
+	PrintUnorderedRecurse(pNode->GetLeft());
 }
 
 void BinaryTree::Draw(TreeNode* selected)
@@ -265,7 +283,6 @@ void BinaryTree::Draw(TreeNode* selected)
 
 void BinaryTree::Draw(TreeNode* pNode, int x, int y, int horizontalSpacing, TreeNode* selected)
 {
-	
 	horizontalSpacing /= 2;
 
 	if (pNode)

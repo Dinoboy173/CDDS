@@ -11,7 +11,6 @@ EntityEditorApp::EntityEditorApp(int screenWidth, int screenHeight) :
 	Application(screenWidth, screenHeight, "Entity Editor App")
 {
 	OpenAndCreateFile();
-
 	MapMemory();
 }
 
@@ -38,7 +37,7 @@ void EntityEditorApp::Startup()
 
 void EntityEditorApp::Shutdown()
 {
-
+	
 }
 
 void EntityEditorApp::Update(float deltaTime)

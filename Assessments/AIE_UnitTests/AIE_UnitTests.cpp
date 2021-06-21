@@ -5,6 +5,33 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
+template<int ID>
+class MockListItemDeleteCount
+{
+public:
+
+	MockListItemDeleteCount()
+	{
+		counter++;
+	}
+
+	MockListItemDeleteCount(const MockListItemDeleteCount& copy)
+	{
+		counter++;
+	}
+
+	~MockListItemDeleteCount()
+	{
+		counter--;
+	}
+
+	static int counter;
+
+};
+
+template<int ID>
+int MockListItemDeleteCount<ID>::counter = 0;
+
 namespace AIEUnitTests
 {
 	TEST_CLASS(AIELinkedListTest)
@@ -243,6 +270,35 @@ namespace AIEUnitTests
 			Assert::IsFalse(list.IsEmpty());
 
 			Assert::IsTrue(list.Count() == 5u);
+		}
+
+		TEST_METHOD(List_Items_Are_Deleted)
+		{
+			const int ID = 9786532;
+			{
+				LinkedList<MockListItemDeleteCount<ID>> list;
+
+				list.PushBack(MockListItemDeleteCount<ID>());
+				list.PushBack(MockListItemDeleteCount<ID>());
+				list.PushBack(MockListItemDeleteCount<ID>());
+
+				Assert::AreEqual(MockListItemDeleteCount<ID>::counter, 3);
+
+				list.PopBack();
+				Assert::AreEqual(MockListItemDeleteCount<ID>::counter, 2);
+
+				list.Clear();
+				Assert::AreEqual(MockListItemDeleteCount<ID>::counter, 0);
+
+				list.PushBack(MockListItemDeleteCount<ID>());
+				list.PushBack(MockListItemDeleteCount<ID>());
+				list.PushBack(MockListItemDeleteCount<ID>());
+
+				Assert::AreEqual(MockListItemDeleteCount<ID>::counter, 3);
+			}
+
+			Assert::AreEqual(MockListItemDeleteCount<ID>::counter, 0);
+
 		}
 	};
 }

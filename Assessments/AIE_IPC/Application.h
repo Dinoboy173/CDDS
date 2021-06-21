@@ -4,6 +4,8 @@
 #include <raylib.h>
 #include "FixWindows.h"
 #include "Entity.h"
+#include <time.h>
+#include <random>
 
 class Application
 {
@@ -29,16 +31,13 @@ protected:
 	int m_screenWidth;
 	int m_screenHeight;
 	const char* m_windowTitle;
-
-	//bool m_editorIsOpen = false;
-
-	bool m_isCreated = false; // try use this for consideration
+	
+	bool m_isCreated = false;
 	HANDLE m_fileHandle;
 	enum { ENTITY_COUNT = 10 };
 	Entity *m_data;
 	Entity m_entities[ENTITY_COUNT];
 	const wchar_t m_mySharedMemory[7] = L"Memory";
-	const wchar_t m_bool[11] = L"boolMemory";
 
 private:
 };
