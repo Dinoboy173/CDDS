@@ -34,7 +34,7 @@ protected:
 	
 	bool m_isCreated = false;
 	HANDLE m_fileHandle;
-	enum { ENTITY_COUNT = 10 };
+	enum { ENTITY_COUNT = 300 };
 	Entity *m_data;
 	Entity m_entities[ENTITY_COUNT];
 	const wchar_t m_mySharedMemory[7] = L"Memory";

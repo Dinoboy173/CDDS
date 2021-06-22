@@ -61,8 +61,7 @@ public:
 
     ~LinkedList()
     {
-        if (m_first != nullptr)
-            Clear();
+        Clear();
     }
 
     LinkedList(std::initializer_list<T> list)

@@ -82,9 +82,6 @@ namespace AIEUnitTests
 
 			list.PushBack(40);
 
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
-
 			Assert::AreEqual(list.FirstNode()->value, 10);
 			Assert::AreEqual(list.LastNode()->value, 40);
 
@@ -98,9 +95,6 @@ namespace AIEUnitTests
 			LinkedList<int> list = { 20, 30, 40 };
 
 			list.PushFront(10);
-
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
 
 			Assert::AreEqual(list.FirstNode()->value, 10);
 			Assert::AreEqual(list.LastNode()->value, 40);
@@ -116,9 +110,6 @@ namespace AIEUnitTests
 
 			list.PopBack();
 
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
-
 			Assert::AreEqual(list.FirstNode()->value, 10);
 			Assert::AreEqual(list.LastNode()->value, 30);
 
@@ -132,9 +123,6 @@ namespace AIEUnitTests
 			LinkedList<int> list = { 10, 20, 30, 40 };
 
 			list.PopFront();
-
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
 
 			Assert::AreEqual(list.FirstNode()->value, 20);
 			Assert::AreEqual(list.LastNode()->value, 40);
@@ -160,69 +148,24 @@ namespace AIEUnitTests
 			Assert::IsTrue(list.Count() == 0);
 		}
 
-		TEST_METHOD(Remove_From_List_Middle)
+		TEST_METHOD(Remove_From_List)
 		{
 			LinkedList<int> list = { 10, 20, 30, 40 };
 
 			for (auto iter = list.begin(); iter != list.end();)
 			{
-
 				if (*iter == 30)
 					iter = list.Remove(iter);
 				else
 					iter++;
 			}
 
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
-
-			Assert::AreEqual(list.FirstNode()->value, 10);
-			Assert::AreEqual(list.LastNode()->value, 40);
-
-			Assert::IsFalse(list.IsEmpty());
-
-			Assert::IsTrue(list.Count() == 3u);
-		}
-		
-		TEST_METHOD(Remove_From_List_End)
-		{
-			LinkedList<int> list = { 10, 20, 30, 40 };
-
-			for (auto iter = list.begin(); iter != list.end();)
+			for (auto iter = list.begin(); iter != list.end(); iter++)
 			{
-				if (*iter == 40)
-					iter = list.Remove(iter);
-				else
-					iter++;
+				Assert::AreNotEqual(iter.node->value, 30);
 			}
 
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
-
 			Assert::AreEqual(list.FirstNode()->value, 10);
-			Assert::AreEqual(list.LastNode()->value, 30);
-
-			Assert::IsFalse(list.IsEmpty());
-
-			Assert::IsTrue(list.Count() == 3u);
-		}
-		
-		TEST_METHOD(Remove_From_List_Start)
-		{
-			LinkedList<int> list = { 10, 20, 30, 40 };
-
-			for (auto iter = list.begin(); iter != list.end();)
-			{
-				if (*iter == 10)
-					iter = list.Remove(iter);
-				else
-					iter++;
-			}
-
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
-
-			Assert::AreEqual(list.FirstNode()->value, 20);
 			Assert::AreEqual(list.LastNode()->value, 40);
 
 			Assert::IsFalse(list.IsEmpty());
@@ -242,8 +185,10 @@ namespace AIEUnitTests
 					iter++;
 			}
 
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
+			for (auto iter = list.begin(); iter != list.end(); iter++)
+			{
+				Assert::AreNotEqual(iter.node->value, 20);
+			}
 
 			Assert::AreEqual(list.FirstNode()->value, 10);
 			Assert::AreEqual(list.LastNode()->value, 30);
@@ -257,12 +202,13 @@ namespace AIEUnitTests
 		{
 			LinkedList<int> list = { 10, 20, 30, 40 };
 
-			auto iter = std::find(list.begin(), list.end(), 30);
+			auto iter1 = std::find(list.begin(), list.end(), 30);
 
-			list.Insert(iter, 35);
+			list.Insert(iter1, 35);
 
-			Assert::IsNotNull(list.FirstNode());
-			Assert::IsNotNull(list.LastNode());
+			auto iter2 = std::find(list.begin(), list.end(), 35);
+
+			Assert::AreEqual(iter2.node->value, 35);
 
 			Assert::AreEqual(list.FirstNode()->value, 10);
 			Assert::AreEqual(list.LastNode()->value, 40);
@@ -272,6 +218,20 @@ namespace AIEUnitTests
 			Assert::IsTrue(list.Count() == 5u);
 		}
 
+		TEST_METHOD(Sort_Unsorted_List)
+		{
+			LinkedList<int> list = { 30, 40, 10, 20 };
+
+			list.Sort();
+
+			for (auto iter = list.begin().Next(); iter != list.end(); iter++)
+			{
+				Assert::IsTrue(iter.node->prev->value < iter.node->value);
+			}
+
+			Assert::AreEqual(list.FirstNode()->value, 10);
+			Assert::AreEqual(list.LastNode()->value, 40);
+		}
 		TEST_METHOD(List_Items_Are_Deleted)
 		{
 			const int ID = 9786532;

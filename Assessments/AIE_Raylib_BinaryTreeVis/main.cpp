@@ -43,6 +43,18 @@ int main(int argc, char* argv[])
 
     BinaryTree m_binaryTree;
     TreeNode* m_selectedNode = nullptr;
+    m_binaryTree.Insert(6);
+    m_binaryTree.Insert(4);
+    m_binaryTree.Insert(8);
+    m_binaryTree.Insert(2);
+    m_binaryTree.Insert(5);
+    m_binaryTree.Insert(7);
+    m_binaryTree.Insert(9);
+
+    m_binaryTree.Remove(6);
+    m_binaryTree.Remove(7);
+    m_binaryTree.Remove(4);
+
     
     int valueBoxValue = 0;
     bool valueBoxEditMode = false;
