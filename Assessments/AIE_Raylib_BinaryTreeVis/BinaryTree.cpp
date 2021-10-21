@@ -27,8 +27,17 @@ void BinaryTree::Insert(TreeNode* root, TreeNode* nodeToInsert)
 {
 	bool nodeIsInserted = false;
 
+	int _root = 0;
+	int insert = 0;
+
 	while (!nodeIsInserted)
 	{
+		if (m_pRoot != nullptr)
+		{
+			_root = root->GetData();
+			insert = nodeToInsert->GetData();
+		}
+
 		if (m_pRoot == nullptr)
 		{
 			m_pRoot = nodeToInsert;
@@ -36,25 +45,36 @@ void BinaryTree::Insert(TreeNode* root, TreeNode* nodeToInsert)
 			m_pRoot->SetRight(nullptr);
 
 			nodeIsInserted = true;
-		}
-		else if (nodeToInsert->GetData() == root->GetData())
+
 			return;
-		else if (nodeToInsert->GetData() < root->GetData())
-			if (root->HasLeft())
-				root = root->GetLeft();
-			else
-			{
-				root->SetLeft(nodeToInsert);
-				nodeIsInserted = true;
-			}
-		else if (nodeToInsert->GetData() > root->GetData())
+		}
+		else if (insert == _root) return;
+
+		if (insert > _root)
+		{
 			if (root->HasRight())
 				root = root->GetRight();
 			else
 			{
 				root->SetRight(nodeToInsert);
 				nodeIsInserted = true;
+
+				return;
 			}
+		}
+
+		if (insert < _root)
+		{
+			if (root->HasLeft())
+				root = root->GetLeft();
+			else
+			{
+				root->SetLeft(nodeToInsert);
+				nodeIsInserted = true;
+
+				return;
+			}
+		}
 	}
 }
 
