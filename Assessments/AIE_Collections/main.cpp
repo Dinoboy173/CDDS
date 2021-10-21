@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+
 #include "LinkedList.h"
 
 int main()
@@ -15,13 +16,15 @@ int main()
 
     std::cout << std::endl;
     
-    auto t1 = std::chrono::high_resolution_clock::now();
-    list.Sort(); // Do the sort that you want to time
-    auto t2 = std::chrono::high_resolution_clock::now();
-    // Getting number of milliseconds as a double.
-    std::chrono::duration<double, std::milli> duration = t2 - t1;
-    std::cout << duration.count() << "ms";
-    std::cout << std::endl;
+    // \/ Sort Function \/ It can take a while sometimes, keep it commented while testing everything else otherwise it takes too long
+    
+    // auto t1 = std::chrono::high_resolution_clock::now();
+    // list.Sort(); // Do the sort that you want to time
+    // auto t2 = std::chrono::high_resolution_clock::now();
+    // // Getting number of milliseconds as a double.
+    // std::chrono::duration<double, std::milli> duration = t2 - t1;
+    // std::cout << duration.count() << "ms";
+    // std::cout << std::endl;
 
     for (auto iter = list.begin(); iter != list.end(); iter++)
     {
@@ -40,7 +43,7 @@ int main()
 
     list.PopBack();
     std::cout << "Count: " << list.Count() << "\t\t Expected: 6" << std::endl;
-
+    
     list.PopFront();
     std::cout << "Count: " << list.Count() << "\t\t Expected: 5" << std::endl;
 

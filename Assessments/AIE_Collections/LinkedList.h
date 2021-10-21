@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <algorithm>
 
 template<class T>
 class LinkedList
@@ -25,7 +26,7 @@ public:
         Iterator operator ++ (int) { return Next(); }
 
         // Decrement operators
-        Iterator operator -- () { return Prev(); }
+        Iterator& operator -- () { return Prev(); }
         Iterator operator -- (int) { return Prev(); }
 
         // Equality check operators
@@ -111,6 +112,7 @@ public:
             }
         }
     }
+
     void PushFront(T value)
     {
         if (m_first == nullptr && m_last == nullptr)
@@ -341,6 +343,7 @@ public:
     {
         return Iterator(m_first);
     }
+
     Iterator end()
     {
         return Iterator(nullptr);
