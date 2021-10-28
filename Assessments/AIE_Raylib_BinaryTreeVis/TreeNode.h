@@ -21,10 +21,10 @@ public:
 	
 private:
 	// this could also be a pointer to another object if you like
-	int m_value;
+	int m_value = 0;
 
 	// node's children
-	TreeNode* m_left;
-	TreeNode* m_right;
+	TreeNode* m_left = nullptr;
+	TreeNode* m_right = nullptr;
 };
 

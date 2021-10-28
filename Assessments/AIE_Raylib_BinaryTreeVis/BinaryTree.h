@@ -24,7 +24,7 @@ public:
 	void Insert(TreeNode* root, TreeNode* nodeToInsert);
 
 	TreeNode* Remove(TreeNode* root, int value);
-	TreeNode* Find(TreeNode* root, TreeNode* parent, int value);
+	TreeNode* FindParent(TreeNode* root, TreeNode* parent, int value);
 	std::pair<TreeNode*, TreeNode*> SplitTree(TreeNode* root, TreeNode* parent, int value);
 	void InsertTree(TreeNode* root, TreeNode* secondRoot, int value);
 
@@ -35,7 +35,7 @@ public:
 
 private:
 	//Find the node with the specified value.
-	bool FindNode(int a_nSearchValue, TreeNode*& ppOutNode, TreeNode*& ppOutParent);
+	bool FindNode(TreeNode*& ppOutNode);
 
 	//Used to recurse through the nodes in value order and print their values.
 	void PrintOrderedRecurse(TreeNode*);
@@ -45,7 +45,7 @@ private:
 	void Draw(TreeNode*, int x, int y, int horizontalSpacing, TreeNode* selected = nullptr);
 
 	//The root node of the tree
-	TreeNode* m_pRoot;
+	TreeNode* m_pRoot = nullptr;
 };
 
 #endif //_BINARYTREE_H_
