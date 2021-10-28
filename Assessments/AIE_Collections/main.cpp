@@ -1,7 +1,10 @@
 #include <iostream>
 #include <chrono>
+#include <algorithm>
 
 #include "LinkedList.h"
+
+
 
 int main()
 {
@@ -49,13 +52,13 @@ int main()
 
     list.Remove(std::find(list.begin(), list.end(), 30));
     std::cout << "Count: " << list.Count() << "\t\t Expected: 4" << std::endl;
-
+    
     list.Remove(std::find(list.begin(), list.end(), 50));
     std::cout << "Count: " << list.Count() << "\t\t Expected: 3" << std::endl;
-
+    
     list.Insert(std::find(list.begin(), list.end(), 20), 30);
     std::cout << "Count: " << list.Count() << "\t\t Expected: 4" << std::endl;
-
+    
     list.Remove(std::find(list.begin(), list.end(), 10));
     std::cout << "Count: " << list.Count() << "\t\t Expected: 3" << std::endl;
 

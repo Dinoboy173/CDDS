@@ -1,3 +1,6 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
@@ -346,7 +349,7 @@ public:
 
     Iterator end()
     {
-        return Iterator(nullptr);
+        return Iterator(m_last);
     }
 
 protected:
@@ -356,3 +359,5 @@ private:
 
     unsigned int m_count = 0;
 };
+
+#endif
