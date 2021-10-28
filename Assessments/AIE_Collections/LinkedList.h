@@ -177,54 +177,15 @@ public:
 
         while (!isSorted)
         {
-            Node* nodeToMove = FirstNode();
-
-            bool nodeSelected = false;
-            int sortCount = m_count;
-            int stop;
-
-            srand(time(NULL));
-
-            while (sortCount != 0)
+            for (auto iter = Iterator(FirstNode()->next); iter != Iterator(LastNode()->next); iter++)
             {
-                while (!nodeSelected)
+                if (iter.node->prev->value > iter.node->value)
                 {
-                    for (auto iter = begin(); iter != end();)
-                    {
-                        stop = rand() % m_count + 1;
-
-                        if (stop <= 1)
-                        {
-                            nodeToMove = iter.node;
-                            nodeSelected = true;
-                            break;
-                        }
-                        else
-                            iter++;
-                    }
-                }
-
-                while (nodeSelected)
-                {
-                    for (auto iter = begin(); iter != end();)
-                    {
-                        stop = rand() % m_count + 1;
-
-                        if (stop <= 1)
-                        {
-                            Swap(nodeToMove, iter.node);
-
-                            sortCount--;
-                            nodeSelected = false;
-                            break;
-                        }
-                        else
-                            iter++;
-                    }
+                    Swap(iter.node, iter.node->prev);
                 }
             }
 
-            for (auto iter = Iterator(FirstNode()->next); iter != end(); iter++)
+            for (auto iter = Iterator(FirstNode()->next); iter != Iterator(LastNode()->next); iter++)
             {
                 if (iter.node->prev->value > iter.node->value)
                 {
@@ -268,6 +229,7 @@ public:
             nodeToRemove->next->prev = nodeToRemove->prev;
 
         Node* nextNode = nodeToRemove->next;
+        Iterator returnNode = nodeToRemove->next;
 
         nodeToRemove->next = nullptr;
         nodeToRemove->prev = nullptr;
@@ -275,7 +237,7 @@ public:
 
         m_count--;
 
-        return Iterator(nextNode);
+        return returnNode;
     }
 
     Iterator Insert(Iterator iter, const T& value)

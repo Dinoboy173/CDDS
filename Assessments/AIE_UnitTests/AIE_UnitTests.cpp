@@ -177,7 +177,7 @@ namespace AIEUnitTests
 		{
 			LinkedList<int> list = { 20, 10, 20, 30, 20 };
 
-			for (auto iter = list.begin(); iter != list.end();)
+			for (auto iter = list.begin(); iter != nullptr;)
 			{
 				if (*iter == 20)
 					iter = list.Remove(iter);
@@ -185,7 +185,7 @@ namespace AIEUnitTests
 					iter++;
 			}
 
-			for (auto iter = list.begin(); iter != list.end(); iter++)
+			for (auto iter = list.begin(); iter != nullptr; iter++)
 			{
 				Assert::AreNotEqual(iter.node->value, 20);
 			}
